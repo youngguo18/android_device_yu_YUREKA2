@@ -101,8 +101,7 @@ PRODUCT_PACKAGES += \
     libqcomvisualizer \
     libqcomvoiceprocessing \
     libqcomvoiceprocessingdescriptors \
-    libwebrtc_audio_preprocessing \
-    tinymix
+    libwebrtc_audio_preprocessing
 
 PRODUCT_PACKAGES += \
     android.hardware.audio@5.0-impl \
