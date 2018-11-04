@@ -229,6 +229,10 @@ ro.adb.secure=0 \
 ro.secure=0 \
 ro.debuggable=1
 
+# Touch optimize
+persist.vendor.qti.inputopts.enable=true
+persist.vendor.qti.inputopts.movetouchslop=0.6
+
 # Wifi
 PRODUCT_PROPERTY_OVERRIDES += \
 wifi.interface=wlan0
