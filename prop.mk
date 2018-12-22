@@ -137,6 +137,11 @@ ro.vendor.extension_library=libqti-perfd-client.so \
 ro.vendor.qti.sys.fw.bservice_enable=true \
 ro.sys.fw.dex2oat_thread_count=8 
 
+# Memory optimizations
+PRODUCT_PROPERTY_OVERRIDES += \
+ro.vendor.qti.sys.fw.bservice_enable=true \
+ro.vendor.qti.am.reschedule_service=true
+
 # Netmgrd
 PRODUCT_PROPERTY_OVERRIDES += \
 ro.vendor.use_data_netmgrd=true \
