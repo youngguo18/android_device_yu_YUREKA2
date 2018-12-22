@@ -53,7 +53,7 @@ TARGET_KERNEL_CONFIG := YUREKA2_defconfig
 TARGET_KERNEL_SOURCE := kernel/yu/msm8953
 
 # ANT+
-#BOARD_ANT_WIRELESS_DEVICE := "qualcomm-hidl"
+BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
 
 # Audio
 # for TFA98XX {

@@ -82,9 +82,10 @@ PRODUCT_COPY_FILES += \
 -include device/yu/YUREKA2/prop.mk
 
 # ANT+
-#PRODUCT_PACKAGES += \
+PRODUCT_PACKAGES += \
     AntHalService \
-    antradio_app 
+    com.dsi.ant.antradio_library \
+    libantradio
 
 #Audio
 PRODUCT_PACKAGES += \
