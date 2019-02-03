@@ -80,6 +80,11 @@ on post-fs-data
     chmod 0644 /sys/class/timed_output/vibrator/vtg_max
     chmod 0644 /sys/class/timed_output/vibrator/vtg_min
 
+    chown media media /sys/bus/platform/drivers/msm8952-asoc-wcd/SmartPa_Ctl
+    chmod 0660 /sys/bus/platform/drivers/msm8952-asoc-wcd/SmartPa_Ctl
+    chown media media /dev/i2c-8
+    chmod 0660 /dev/i2c-8
+	
    # Add a cpuset for the camera daemon
    # We want all cores for camera
     mkdir /dev/cpuset/camera-daemon
