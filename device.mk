@@ -228,7 +228,8 @@ PRODUCT_COPY_FILES += \
 
 # Healthd
 PRODUCT_PACKAGES += \
-    android.hardware.health@2.0-service 
+    android.hardware.health@2.0-service \
+	chargeonlymode
 
 # HIDL
 PRODUCT_PACKAGES += \
@@ -479,5 +480,5 @@ PRODUCT_COPY_FILES += \
 
 
 # Inherit proprietary files
-$(call inherit-product-if-exists, vendor/xiaomi/markw/markw-vendor.mk)
-$(call inherit-product, vendor/xiaomi/msm8953-common/msm8953-common-vendor.mk)
+$(call inherit-product-if-exists, vendor/yu/YUREKA2/YUREKA2-vendor.mk)
+$(call inherit-product, vendor/yu/msm8953-common/msm8953-common-vendor.mk)
