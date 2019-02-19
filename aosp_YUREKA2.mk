@@ -15,11 +15,11 @@
 # limitations under the License.
 #
 
-# Inherit from markw device
-$(call inherit-product, device/xiaomi/markw/full_markw.mk)
+# Inherit from YUREKA2 device
+$(call inherit-product, device/yu/YUREKA2/full_YUREKA2.mk)
 
-# Inherit some common Baikalos stuff
-$(call inherit-product, vendor/baikalos/config/common_full_phone.mk)
+# Inherit some common AEX stuff.
+$(call inherit-product, vendor/aosp/common.mk)
 
 # Boot animation
 TARGET_SCREEN_WIDTH := 1080
@@ -29,16 +29,18 @@ TARGET_DENSITY := xxhdpi
 TARGET_BOOT_ANIMATION_RES := 1080
 
 # Device identifier. This must come after all inclusions
-PRODUCT_NAME := baikalos_markw
-BOARD_VENDOR := Xiaomi
-PRODUCT_DEVICE := markw
+PRODUCT_NAME := aosp_YUREKA2
+BOARD_VENDOR := YU
+PRODUCT_DEVICE := YUREKA2
 
-PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
+# Vendor security patch level
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.lineage.build.vendor_security_patch=2018-12-12
+
+PRODUCT_GMS_CLIENTID_BASE := android-micromax
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRIVATE_BUILD_DESC="markw-user 6.0.1 MMB29M V9.6.2.0.MBECNFD release-keys" \
-    TARGET_DEVICE="markw" \
-    DEVICE_MAINTAINERS="SonicBSV"
-    
-# Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
-BUILD_FINGERPRINT := Xiaomi/markw/markw:6.0.1/MMB29M/V9.6.2.0.MBECNFD:user/release-keys
+    PRODUCT_NAME=YUREKA2 \
+    PRIVATE_BUILD_DESC="wt89536-user 6.0.1 MMB29M eng.zhouchao.20170723.172948 release-keys"
+
+BUILD_FINGERPRINT := YU/YUREKA2/YUREKA2:6.0.1/MMB29M/01112051:user/release-keys

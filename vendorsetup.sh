@@ -14,4 +14,6 @@
 # limitations under the License.
 #
 
-add_lunch_combo baikalos_markw-userdebug
+add_lunch_combo aosp_YUREKA2-user
+add_lunch_combo aosp_YUREKA2-eng
+add_lunch_combo aosp_YUREKA2-userdebug

@@ -18,13 +18,13 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Inherit from markw device
-$(call inherit-product, device/xiaomi/markw/device.mk)
+# Inherit from YUREKA2 device
+$(call inherit-product, device/yu/YUREKA2/device.mk)
 
 # Device identifier. This must come after all inclusions
-TARGET_VENDOR := Xiaomi
-PRODUCT_DEVICE := markw
-PRODUCT_NAME := full_markw
-PRODUCT_BRAND := Xiaomi
-PRODUCT_MODEL := Redmi 4
-PRODUCT_MANUFACTURER := Xiaomi
+TARGET_VENDOR := YU
+PRODUCT_DEVICE := YUREKA2
+PRODUCT_NAME := full_YUREKA2
+PRODUCT_BRAND := YU
+PRODUCT_MODEL := YU5551
+PRODUCT_MANUFACTURER := YU
