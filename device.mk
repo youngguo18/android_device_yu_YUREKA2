@@ -136,9 +136,9 @@ PRODUCT_PACKAGES += \
     android.hardware.automotive.vehicle@2.0 \
     android.hardware.automotive.vehicle@2.0-manager-lib
 
-# BaikalParts
+# Doze
 PRODUCT_PACKAGES += \
-    BaikalParts
+    YUDoze
 
 # Bluetooth
 PRODUCT_PACKAGES += \
