@@ -77,42 +77,12 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml \
     $(LOCAL_PATH)/configs/privapp-permissions-qti.xml:system/etc/permissions/privapp-permissions-qti.xml
 
-# HWUI
-PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.heapgrowthlimit=288m \
-    dalvik.vm.heapstartsize=8m \
-    dalvik.vm.heapsize=768m \
-    dalvik.vm.heaptargetutilization=0.75 \
-    dalvik.vm.heapminfree=512k \
-    dalvik.vm.heapmaxfree=8m
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.extension_library=libqti-perfd-client.so \
-    persist.vendor.radio.apm_sim_not_pwdn=1 \
-    persist.vendor.radio.sib16_support=1 \
-    persist.vendor.radio.custom_ecc=1 \
-    persist.vendor.radio.rat_on=combine \
-    persist.radio.schd.cache=3500 \
-    sys.vendor.shutdown.waittime=500 \
-    ro.build.shutdown_timeout=0 \
-    ro.frp.pst=/dev/block/bootdevice/by-name/config \
-    persist.radio.multisim.config=dsds \
-    persist.vendor.qcomsysd.enabled=1  
-
 # Additional native libraries
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
 
-# Add an extra 10% saturation to display colors
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.sf.color_saturation=1.1
-
-# ADB Debug
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    ro.adb.secure=0
-
-# Haters gonna hate..
-PRODUCT_CHARACTERISTICS := nosdcard
+# Device Properties
+-include device/yu/YUREKA2/prop.mk
 
 # ANT+
 #PRODUCT_PACKAGES += \
@@ -159,43 +129,6 @@ PRODUCT_COPY_FILES += \
 	$(TOPDIR)frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
 	$(TOPDIR)frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
 	$(TOPDIR)frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    af.fast_track_multiplier=2 \
-    vendor.audio_hal.period_size=192 \
-    ro.vendor.audio.sdk.fluencetype=fluence \
-    persist.vendor.audio.fluence.voicecall=true \
-    persist.vendor.audio.fluence.voicerec=false \
-    persist.vendor.audio.fluence.speaker=true \
-    audio.offload.disable=true \
-    vendor.audio.tunnel.encode=false \
-    vendor.audio.offload.buffer.size.kb=64 \
-    audio.offload.min.duration.secs=30 \
-    audio.offload.video=true \
-    vendor.audio.offload.track.enable=true \
-    audio.deep_buffer.media=true \
-    vendor.voice.path.for.pcm.voip=true \
-    vendor.audio.offload.multiaac.enable=true \
-    vendor.audio.dolby.ds2.enabled=false \
-    vendor.audio.dolby.ds2.hardbypass=false \
-    vendor.audio.offload.multiple.enabled=false \
-    vendor.audio.offload.passthrough=false \
-    ro.vendor.audio.sdk.ssr=false \
-    vendor.audio.offload.gapless.enabled=true \
-    vendor.audio.safx.pbe.enabled=true \
-    vendor.audio.parser.ip.buffer.size=262144 \
-    vendor.audio.playback.mch.downsample=true \
-    vendor.audio.use.sw.alac.decoder=true \
-    vendor.audio.use.sw.ape.decoder=true \
-    vendor.audio.pp.asphere.enabled=false \
-    vendor.voice.playback.conc.disabled=true \
-    vendor.voice.record.conc.disabled=false \
-    vendor.voice.voip.conc.disabled=true \
-    vendor.voice.conc.fallbackpath=deep-buffer \
-    vendor.audio.hw.aac.encoder=true \
-    vendor.audio.flac.sw.decoder.24bit=true \
-    ro.af.client_heap_size_kbyte=7168 \
-    persist.vendor.audio.hw.binder.size_kbyte=1024
 
 # Automotive
 PRODUCT_PACKAGES += \
@@ -251,18 +184,11 @@ PRODUCT_PACKAGES += \
     vendor.display.config@1.0 \
     vendor.display.config@1.0_vendor
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.opengles.version=196610 \
-    ro.sf.lcd_density=440 
-
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
     android.hardware.drm@1.0-service \
     android.hardware.drm@1.1-service.clearkey
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    drm.service.enabled=true
 
 # Face detection extension
 PRODUCT_PACKAGES += \
@@ -517,12 +443,6 @@ PRODUCT_PACKAGES += \
 # USB HAL
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service.basic 
-    
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.service.adb.enable=1 \
-    persist.service.debuggable=1 \
-    persist.sys.usb.config.extra=none \
-    persist.sys.usb.config=mtp,adb
 
 # Vibrator
 PRODUCT_PACKAGES += \
