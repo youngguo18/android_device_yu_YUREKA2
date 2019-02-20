@@ -201,8 +201,9 @@ PRODUCT_PACKAGES += \
 
 # FM
 PRODUCT_PACKAGES += \
-    FMRadio \
-    libfmjni
+    FM2 \
+    libqcomfm_jni \
+    qcom.fmradio
 
 PRODUCT_PACKAGES += \
     android.hardware.broadcastradio@1.0-impl
