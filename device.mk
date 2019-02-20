@@ -267,6 +267,8 @@ PRODUCT_PACKAGES += \
     init.qcom.rc \
     init.qcom.usb.rc \
     init.target.rc \
+	init.spectrum.rc \
+	init.spectrum.sh \
     ueventd.qcom.rc
 
 # Keylayout
