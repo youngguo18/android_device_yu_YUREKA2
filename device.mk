@@ -264,7 +264,6 @@ PRODUCT_PACKAGES += \
     fstab.qcom \
     init.msm.usb.configfs.rc \
     init.qcom.factory.rc \
-    init.performance_profiles.rc \
     init.qcom.rc \
     init.qcom.usb.rc \
     init.target.rc \
