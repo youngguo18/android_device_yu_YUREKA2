@@ -145,6 +145,12 @@
 #QDSS
 /dev/byte-cntr            0660   system    oem_2902
 
+# Nfc
+/dev/nfc-nci              0660    nfc         nfc
+/dev/nq-nci               0660    nfc         nfc
+/dev/assd                 0660    nfc         nfc
+/dev/pn547                0660    nfc         nfc
+
 # wlan
 /dev/wcnss_wlan           0660   system     system
 /dev/wcnss_ctrl           0660   system     system
@@ -328,3 +334,13 @@
 
 #Memory Offline
 /sys/devices/system/memory/memory* state    0660 system system
+
+#add by gbdb
+/dev/i2c-8                0660   media      media
+#add end
+
+# fpc Fingerprint
+/sys/devices/soc/soc:fpc1020        hw_reset            0220   system     system
+/sys/devices/soc/soc:fpc1020        irq	                0660   system     system
+/sys/devices/soc/soc:fpc1020        wakeup_enable       0220   system     system
+/sys/devices/soc/soc:fpc1020        compatible_all      0220   system     system
