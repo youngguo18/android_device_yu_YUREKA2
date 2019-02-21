@@ -29,6 +29,7 @@ import /vendor/etc/init/hw/init.qcom.usb.rc
 import /vendor/etc/init/hw/init.msm.usb.configfs.rc
 import /vendor/etc/init/hw/init.target.rc
 import /vendor/etc/init/hw/init.qcom.factory.rc
+import /vendor/etc/init/hw/init.spectrum.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
@@ -545,8 +546,6 @@ on property:vendor.radio.atfwd.start=false
 
 
 # FrancoKernel - start
-    # allows FKUpdater to know this feature is supported
-    setprop fku.profiles 1
     
     # according to Qcom this legacy value improves first launch latencies
     # stock value is 512k
