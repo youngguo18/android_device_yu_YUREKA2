@@ -145,12 +145,6 @@
 #QDSS
 /dev/byte-cntr            0660   system    oem_2902
 
-# Nfc
-/dev/nfc-nci              0660    nfc         nfc
-/dev/nq-nci               0660    nfc         nfc
-/dev/assd                 0660    nfc         nfc
-/dev/pn547                0660    nfc         nfc
-
 # wlan
 /dev/wcnss_wlan           0660   system     system
 /dev/wcnss_ctrl           0660   system     system
