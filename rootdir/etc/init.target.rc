@@ -85,11 +85,6 @@ on post-fs-data
     chown media media /dev/i2c-8
     chmod 0660 /dev/i2c-8
 	
-	chown nfc nfc /sys/devices/platform/nfc-power/nfc_power
-    chmod 0660 /sys/devices/platform/nfc-power/nfc_power
-    chown nfc nfc /dev/pn547
-    chmod 0660 /dev/pn547
-	
    # Add a cpuset for the camera daemon
    # We want all cores for camera
     mkdir /dev/cpuset/camera-daemon
