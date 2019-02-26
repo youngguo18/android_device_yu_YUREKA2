@@ -197,7 +197,7 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.1-service.xiaomi_markw
+    android.hardware.biometrics.fingerprint@2.0-service.xiaomi_mido
 
 # FM
 PRODUCT_PACKAGES += \
@@ -256,7 +256,6 @@ PRODUCT_PACKAGES += \
     init.qcom.syspart_fixup.sh \
     init.qcom.usb.sh \
     init.qcom.wifi.sh \
-    init.goodix.sh \
     init.qti.fm.sh \
     init.qti.ims.sh \
     init.qti.qseecomd.sh \

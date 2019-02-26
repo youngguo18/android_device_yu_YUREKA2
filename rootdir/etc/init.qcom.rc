@@ -238,9 +238,6 @@ on boot
     chown system system /sys/devices/soc/soc:fpc1020/spi_prepare
     chmod 0660 /sys/devices/soc/soc:fpc1020/spi_prepare
 
-    setprop persist.sys.fp.vendor none
-    start vendor.gx_fpd
-
     # Allow access to emmc rawdump block partition and dload sysfs node
     chown root system /dev/block/bootdevice/by-name/rawdump -p /dev/block/
     chmod 0660 /dev/block/bootdevice/by-name/rawdump -p /dev/block/
@@ -1025,29 +1022,24 @@ service bugreport /system/bin/dumpstate -d -p -B -z -o /data/user_de/0/com.andro
 #Make MTU adjusting to D1S-3381 by zhangwei8
 write /proc/sys/net/ipv4/tcp_mtu_probing 1
 
-service vendor.gx_fpd /vendor/bin/gx_fpd
+service gx_fpd /vendor/bin/gx_fpd
     class core
     user system
     group system drmrpc
 
 # fpc fingerprint section - start
 on property:persist.sys.fp.vendor=switchf
-    stop vendor.gx_fpd
+    stop gx_fpd
     setprop persist.sys.fp.vendor searchf
     setprop persist.sys.fp.goodix 0
     setprop ro.boot.fpsensor fpc
     setprop ro.hardware.fingerprint fpc
-    start vendor.fps_hal
+    start fps_hal
 
 # goodix fingerprint section - start
 on property:persist.sys.fp.vendor=goodix
     setprop persist.sys.fp.goodix 1
     setprop ro.boot.fpsensor gdx
     setprop ro.hardware.fingerprint goodix 
-    start vendor.fps_hal
-
-service vendor.goodix_script /vendor/bin/init.goodix.sh
-    class late_start
-    user system
-    oneshot
+    start fps_hal
 # goodix fingerprint section - end
