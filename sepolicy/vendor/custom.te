@@ -88,7 +88,8 @@ allow platform_app ctl_bootanim_prop:file read;
 allow platform_app ctl_bugreport_prop:file read;
 allow platform_app ctl_console_prop:file read;
 allow platform_app ctl_default_prop:file read;
-
+allow platform_app system_app_data_file:dir getattr;
+ 
 #============= poweroffalarm_app ==============
 allow poweroffalarm_app bg_boot_complete_prop:file read;
 allow poweroffalarm_app bg_daemon_prop:file read;
@@ -221,3 +222,6 @@ allow netutils_wrapper netutils_wrapper:capability sys_admin;
 
 #=============dpmd=========================
 allow dpmd netutils_wrapper:process noatsecure;
+
+#=============adbd=========================
+allow adbd adbd:capability sys_admin;
