@@ -11,3 +11,6 @@ allow init sysfs_graphics:file { open write };
 
 allow init gx_fpd:binder call;
 allow init servicemanager:binder call;
+
+allow init rild:process noatsecure;
+allow init sysfs:file { open write };
