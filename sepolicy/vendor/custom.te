@@ -50,10 +50,6 @@ allow init zygote:process noatsecure;
 allow installd dex2oat:process noatsecure;
 allow installd idmap:process noatsecure;
 
-#============= isolated_app ==============
-allow isolated_app bg_boot_complete_prop:file read;
-allow isolated_app bg_daemon_prop:file read;
-
 #============= kernel ==============
 allow kernel init:process noatsecure;
 
@@ -74,55 +70,6 @@ allow mm-qcamerad sysfs:file read;
 allow netmgrd kernel:system module_request;
 allow netmgrd netutils_wrapper:process noatsecure;
 
-#============= platform_app ==============
-allow platform_app bg_boot_complete_prop:file read;
-allow platform_app bg_daemon_prop:file read;
-allow platform_app bluetooth_prop:file read;
-allow platform_app bootloader_boot_reason_prop:file read;
-allow platform_app boottime_prop:file read;
-allow platform_app cnd_vendor_prop:file read;
-allow platform_app console_silent_prop:file read;
-allow platform_app ctl_LKCore_prop:file read;
-allow platform_app ctl_atfwd_prop:file read;
-allow platform_app ctl_bootanim_prop:file read;
-allow platform_app ctl_bugreport_prop:file read;
-allow platform_app ctl_console_prop:file read;
-allow platform_app ctl_default_prop:file read;
-allow platform_app system_app_data_file:dir getattr;
- 
-#============= poweroffalarm_app ==============
-allow poweroffalarm_app bg_boot_complete_prop:file read;
-allow poweroffalarm_app bg_daemon_prop:file read;
-allow poweroffalarm_app bluetooth_prop:file read;
-allow poweroffalarm_app bootloader_boot_reason_prop:file read;
-allow poweroffalarm_app boottime_prop:file read;
-
-#============= priv_app ==============
-allow priv_app bg_boot_complete_prop:file read;
-allow priv_app bg_daemon_prop:file read;
-allow priv_app bluetooth_prop:file read;
-allow priv_app bootloader_boot_reason_prop:file read;
-allow priv_app boottime_prop:file read;
-allow priv_app cnd_vendor_prop:file read;
-allow priv_app ctl_bugreport_prop:file read;
-allow priv_app ctl_console_prop:file read;
-allow priv_app ctl_default_prop:file read;
-allow priv_app ctl_dumpstate_prop:file read;
-allow priv_app ctl_interface_start_prop:file read;
-allow priv_app ctl_mdnsd_prop:file read;
-allow priv_app ctl_qcrild_prop:file read;
-allow priv_app ctl_restart_prop:file read;
-allow priv_app ctl_rildaemon_prop:file read;
-allow priv_app ctl_vendor_imsrcsservice_prop:file read;
-allow priv_app ctl_vendor_mmid_prop:file read;
-allow priv_app ctl_vendor_netmgrd_prop:file read;
-allow priv_app ctl_vendor_port-bridge_prop:file read;
-allow priv_app ctl_vendor_qmuxd_prop:file read;
-allow priv_app firstboot_prop:file read;
-allow priv_app mm_parser_prop:file read;
-allow priv_app test_boot_reason_prop:file read;
-allow priv_app theme_prop:file read;
-
 #============= qti_init_shell ==============
 allow qti_init_shell sysfs_devices_system_cpu:dir write;
 
@@ -140,15 +87,6 @@ allow shared_relro bluetooth_prop:file read;
 allow shared_relro bootloader_boot_reason_prop:file read;
 allow shared_relro boottime_prop:file read;
 
-#============= su ==============
-allow su bg_boot_complete_prop:file read;
-allow su devpts:chr_file open;
-allow su ffs_prop:property_service set;
-allow su functionfs:file ioctl;
-allow su runtime_event_log_tags_file:file { open read };
-allow su self:capability dac_override;
-allow su shell_data_file:dir { getattr search write };
-
 #============= system_server ==============
 allow system_server adsprpc_prop:file read;
 allow system_server bg_boot_complete_prop:file read;
@@ -160,49 +98,6 @@ allow system_server console_silent_prop:file read;
 allow system_server ctl_LKCore_prop:file read;
 allow system_server ctl_bootanim_prop:file read;
 allow system_server init:binder { call transfer };
-
-#============= traceur_app ==============
-allow traceur_app bg_boot_complete_prop:file read;
-allow traceur_app bg_daemon_prop:file read;
-allow traceur_app bluetooth_prop:file read;
-allow traceur_app bootloader_boot_reason_prop:file read;
-allow traceur_app boottime_prop:file read;
-
-#============= untrusted_app ==============
-allow untrusted_app bg_boot_complete_prop:file read;
-allow untrusted_app bg_daemon_prop:file read;
-allow untrusted_app bluetooth_prop:file read;
-allow untrusted_app bootloader_boot_reason_prop:file read;
-allow untrusted_app boottime_prop:file read;
-allow untrusted_app runtime_event_log_tags_file:file { open read };
-allow untrusted_app wfd_service_prop:file read;
-allow untrusted_app wifi_prop:file read;
-allow untrusted_app wigig_prop:file read;
-
-#============= untrusted_app_27 ==============
-allow untrusted_app_27 apk_data_file:file setattr;
-allow untrusted_app_27 bg_boot_complete_prop:file { read open };
-allow untrusted_app_27 bg_daemon_prop:file read;
-allow untrusted_app_27 bluetooth_prop:file read;
-allow untrusted_app_27 bootloader_boot_reason_prop:file read;
-allow untrusted_app_27 boottime_prop:file read;
-allow untrusted_app_27 cnd_vendor_prop:file read;
-allow untrusted_app_27 console_silent_prop:file read;
-allow untrusted_app_27 crash_dump:process noatsecure;
-allow untrusted_app_27 ctl_LKCore_prop:file read;
-allow untrusted_app_27 ctl_bootanim_prop:file read;
-allow untrusted_app_27 ctl_vendor_imsrcsservice_prop:file read;
-allow untrusted_app_27 ctl_vendor_mmid_prop:file read;
-allow untrusted_app_27 ctl_vendor_netmgrd_prop:file read;
-allow untrusted_app_27 hal_memtrack_default:binder call;
-allow untrusted_app_27 hal_memtrack_hwservice:hwservice_manager find;
-allow untrusted_app_27 proc_zoneinfo:file { getattr open read };
-allow untrusted_app_27 proc_vmstat:file { open getattr };
-allow untrusted_app_27 anr_data_file:dir read;
-allow untrusted_app_27 sysfs_net:dir { open read search };
-allow untrusted_app_27 serialno_prop:file { open read };
-allow untrusted_app_27 proc_pagetypeinfo:file { read open };
-
 
 #============= vendor_init ==============
 allow vendor_init media_rw_data_file:file { getattr relabelfrom };
