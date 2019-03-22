@@ -6,3 +6,8 @@ allow init proc_boot_reason:file r_file_perms;
 
 # leds
 allow init sysfs_leds:lnk_file read;
+
+allow init sysfs_graphics:file { open write };
+
+allow init gx_fpd:binder call;
+allow init servicemanager:binder call;

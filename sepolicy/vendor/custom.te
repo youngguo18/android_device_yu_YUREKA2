@@ -19,7 +19,7 @@ allow init bootstat:process noatsecure;
 allow init default_android_hwservice:hwservice_manager add;
 allow init fsck:process noatsecure;
 allow init gatekeeperd:process noatsecure;
-allow init hal_fingerprint_mido:process noatsecure;
+allow init hal_fingerprint_markw:process noatsecure;
 allow init hal_keymaster_default:process noatsecure;
 allow init hal_usb_hwservice:hwservice_manager add;
 allow init hal_wifi_supplicant_default:process noatsecure;
@@ -199,3 +199,5 @@ allow wcnss_service wifi_prop:property_service set;
 #============= webview_zygote ==============
 allow webview_zygote theme_data_file:file { getattr open read };
 
+#=============netutils_wrapper=============
+allow netutils_wrapper netutils_wrapper:capability sys_admin;
