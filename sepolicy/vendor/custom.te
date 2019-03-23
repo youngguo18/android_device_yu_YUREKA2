@@ -120,3 +120,6 @@ allow dpmd netutils_wrapper:process noatsecure;
 
 #=============adbd=========================
 allow adbd adbd:capability sys_admin;
+
+#============dnsmasq=======================
+allow dnsmasq dnsmasq:capability sys_admin;
