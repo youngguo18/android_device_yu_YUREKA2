@@ -221,10 +221,3 @@ ro.havoc.maintainer=jmjxperia
 PRODUCT_PROPERTY_OVERRIDES += \
 dalvik.vm.dex2oat-filter=speed \
 dalvik.vm.image-dex2oat-filter=speed
-
-#Additional Camera Properties
-PRODUCT_PROPERTY_OVERRIDES += \
-persist.camera.HAL3.enabled=1 \
-vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera,com.qualcomm.qti.qmmi \
-camera.hal1.packagelist=com.whatsapp,com.facebook.katana,com.instagram.android,com.snapchat.android \
-vendor.camera.hal1.packagelist=com.whatsapp,com.intsig.camscanner,com.instagram.android
