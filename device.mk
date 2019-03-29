@@ -471,3 +471,7 @@ PRODUCT_PACKAGES += \
 # Inherit proprietary files
 $(call inherit-product-if-exists, vendor/yu/YUREKA2/YUREKA2-vendor.mk)
 $(call inherit-product, vendor/yu/msm8953-common/msm8953-common-vendor.mk)
+
+#Prebuilt Apps
+PRODUCT_PACKAGES += \
+	MiXplorer
