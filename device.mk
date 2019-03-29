@@ -474,4 +474,5 @@ $(call inherit-product, vendor/yu/msm8953-common/msm8953-common-vendor.mk)
 
 #Prebuilt Apps
 PRODUCT_PACKAGES += \
-	MiXplorer
+	MiXplorer \
+	Via
