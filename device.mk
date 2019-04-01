@@ -148,8 +148,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
-    android.hardware.camera.provider@2.4-service \
-    camera.device@3.2-impl 
+    android.hardware.camera.provider@2.4-service
 
 # Configstore
 PRODUCT_PACKAGES += \
@@ -186,10 +185,6 @@ PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
     android.hardware.drm@1.0-service \
     android.hardware.drm@1.1-service.clearkey
-
-# Face detection extension
-PRODUCT_PACKAGES += \
-    org.codeaurora.camera
 
 # Fingerprint
 PRODUCT_PACKAGES += \
