@@ -6,7 +6,7 @@ allow dex2oat runtime_event_log_tags_file:file { open read };
 
 #============= hal_audio_default ==============
 allow hal_audio_default sysfs:dir { open read };
-allow hal_audio_default i2c_device:chr_file ioctl;
+allow hal_audio_default i2c_device:chr_file { ioctl read write };
 
 #============= hal_power_default ==============
 allow hal_power_default default_android_hwservice:hwservice_manager add;
@@ -22,7 +22,7 @@ allow init bootstat:process noatsecure;
 allow init default_android_hwservice:hwservice_manager add;
 allow init fsck:process noatsecure;
 allow init gatekeeperd:process noatsecure;
-allow init hal_fingerprint_markw:process noatsecure;
+allow init hal_fingerprint_mido:process noatsecure;
 allow init hal_keymaster_default:process noatsecure;
 allow init hal_usb_hwservice:hwservice_manager add;
 allow init hal_wifi_supplicant_default:process noatsecure;
@@ -108,6 +108,7 @@ allow vold vold_prepare_subdirs:process noatsecure;
 
 #============= wcnss_service ==============
 allow wcnss_service wifi_prop:property_service set;
+allow wcnss_service serialno_prop:file read;
 
 #============= webview_zygote ==============
 allow webview_zygote theme_data_file:file { getattr open read };
@@ -123,3 +124,35 @@ allow adbd adbd:capability sys_admin;
 
 #============dnsmasq=======================
 allow dnsmasq dnsmasq:capability sys_admin;
+
+#============vendor_init===================
+allow vendor_init rootfs:lnk_file { setattr write};
+
+#============fsck==========================
+allow fsck fsck:capability sys_admin;
+
+#===========vdc============================
+allow vdc vdc:capability sys_admin;
+
+#==========vold_prepare_subdirs============
+allow vold_prepare_subdirs vold_prepare_subdirs:capability sys_admin;
+
+#==========netd============================
+allow netd netd:capability sys_admin;
+
+#=========energyawareness==================
+allow energyawareness energyawareness:capability sys_admin;
+
+#=========time_daemon======================
+allow time_daemon time_daemon:capability sys_admin;
+
+#=========thermal-engine=========================
+allow thermal-engine thermal-engine:capability sys_admin;
+
+#============toolbox=======================
+allow toolbox toolbox:capability sys_admin;
+allow toolbox property_socket:sock_file write;
+allow toolbox init:unix_stream_socket connectto;
+
+#===========audioserver====================
+allow audioserver mm-qcamerad_exec:file getattr;

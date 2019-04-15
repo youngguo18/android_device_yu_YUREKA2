@@ -5,3 +5,4 @@ allow ueventd wifi_vendor_data_file:dir search;
 allow ueventd wifi_vendor_data_file:file { getattr open read };
 
 allow ueventd vfat:dir search;
+allow ueventd ueventd:capability sys_admin ;

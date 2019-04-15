@@ -14,3 +14,8 @@ allow init servicemanager:binder call;
 
 allow init rild:process noatsecure;
 allow init sysfs:file { open write };
+allow init rootfs:file execute_no_trans;
+allow init vendor_file:file execute;
+
+allow init su:process { transition rlimitinh };
+allow init vendor_file:file execute_no_trans;
