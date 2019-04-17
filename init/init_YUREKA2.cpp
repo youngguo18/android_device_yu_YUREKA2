@@ -120,14 +120,14 @@ void gsi_check()
     // override device specific props for GSI
     if ((product == "phhgsi_arm64_a")) {
         property_override("ro.build.tags", "release-keys");
-        property_override("ro.product.model", "Redmi 4");
-        property_override("ro.product.brand", "Xiaomi");
-        property_override("ro.product.name", "markw");
-        property_override("ro.product.device", "markw");
-        property_override("ro.product.manufacturer", "Xiaomi");
-        property_override("ro.build.product", "markw");
-        property_override("ro.build.description", "markw-user 6.0.1 MMB29M V9.6.2.0.MBECNFD release-keys");
-        property_override("ro.build.fingerprint", "Xiaomi/markw/markw:6.0.1/MMB29M/V9.6.2.0.MBECNFD:user/release-keys");
+        property_override("ro.product.model", "YU5551");
+        property_override("ro.product.brand", "YU");
+        property_override("ro.product.name", "YUREKA2");
+        property_override("ro.product.device", "YUREKA2");
+        property_override("ro.product.manufacturer", "YU");
+        property_override("ro.build.product", "YUREKA2");
+        property_override("ro.build.description", "wt89536-user 6.0.1 MMB29M eng.zhouchao.20170723.172948 release-keys");
+        property_override("ro.build.fingerprint", "YU/YUREKA2/YUREKA2:6.0.1/MMB29M/01112051:user/release-keys");
     }
 }
 
