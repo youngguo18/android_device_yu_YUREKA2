@@ -432,10 +432,6 @@ PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.0-impl \
     android.hardware.vibrator@1.0-service
 
-# vintf
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/compatibility_matrix.empty.xml:system/etc/vintf/compatibility_matrix.device.xml
-
 # VNDK-SP
 PRODUCT_PACKAGES += \
     vndk-sp
