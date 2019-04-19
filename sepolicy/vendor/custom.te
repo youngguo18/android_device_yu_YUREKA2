@@ -3,10 +3,11 @@ allow dataservice_app runtime_event_log_tags_file:file { open read };
 
 #============= dex2oat ==============
 allow dex2oat runtime_event_log_tags_file:file { open read };
+allow dex2oat mm-qcamerad_exec:file getattr;
 
 #============= hal_audio_default ==============
 allow hal_audio_default sysfs:dir { open read };
-allow hal_audio_default i2c_device:chr_file { ioctl read write };
+allow hal_audio_default i2c_device:chr_file { ioctl read write open };
 
 #============= hal_power_default ==============
 allow hal_power_default default_android_hwservice:hwservice_manager add;
@@ -115,6 +116,7 @@ allow webview_zygote theme_data_file:file { getattr open read };
 
 #=============netutils_wrapper=============
 allow netutils_wrapper netutils_wrapper:capability sys_admin;
+allow netutils_wrapper mm-qcamerad_exec:file getattr;
 
 #=============dpmd=========================
 allow dpmd netutils_wrapper:process noatsecure;
@@ -156,3 +158,12 @@ allow toolbox init:unix_stream_socket connectto;
 
 #===========audioserver====================
 allow audioserver mm-qcamerad_exec:file getattr;
+
+#============idmap=========================
+allow idmap mm-qcamerad_exec:file getattr;
+
+#===========bootstat=======================
+allow bootstat mm-qcamerad_exec:file getattr;
+
+#===========shell==========================
+allow shell mm-qcamerad_exec:file getattr;
