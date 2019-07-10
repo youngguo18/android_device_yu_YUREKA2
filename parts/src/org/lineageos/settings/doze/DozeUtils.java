@@ -23,9 +23,9 @@ import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.UserHandle;
-import android.support.v7.preference.PreferenceManager;
 import android.provider.Settings;
 import android.util.Log;
+import androidx.preference.PreferenceManager;
 
 import static android.provider.Settings.Secure.DOZE_ENABLED;
 
@@ -87,11 +87,6 @@ public final class DozeUtils {
         if (DEBUG) Log.d(TAG, "Launch doze pulse");
         context.sendBroadcastAsUser(new Intent(DOZE_INTENT),
                 new UserHandle(UserHandle.USER_CURRENT));
-    }
-
-    protected static void enableGesture(Context context, String gesture, boolean enable) {
-        PreferenceManager.getDefaultSharedPreferences(context).edit()
-                .putBoolean(gesture, enable).apply();
     }
 
     protected static boolean isGestureEnabled(Context context, String gesture) {
