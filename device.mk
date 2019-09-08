@@ -394,6 +394,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     ims-ext-common \
     ims_ext_common.xml \
+    libui_shim \
     telephony-ext
 
 #PRODUCT_BOOT_JARS += \
