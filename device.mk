@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2017-2018 The LineageOS Project
+# Copyright (C) 2017-2020 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -85,7 +85,7 @@ PRODUCT_COPY_FILES += \
 # Device Properties
 -include device/yu/YUREKA2/prop.mk
 
-# ANT+
+# ANT
 PRODUCT_PACKAGES += \
     AntHalService \
     com.dsi.ant.antradio_library \
@@ -136,6 +136,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.automotive.vehicle@2.0 \
     android.hardware.automotive.vehicle@2.0-manager-lib
+
+# Doze
+PRODUCT_PACKAGES += \
+    YUDoze
 
 # Bluetooth
 PRODUCT_PACKAGES += \
