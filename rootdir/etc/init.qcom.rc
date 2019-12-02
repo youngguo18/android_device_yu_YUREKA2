@@ -502,3 +502,6 @@ service goodix_script /vendor/bin/init.goodix.sh
     class late_start
     user system
     oneshot
+
+on property:dev.bootcomplete=1
+    setprop sys.io.scheduler "bfq"
