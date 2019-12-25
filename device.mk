@@ -157,6 +157,11 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-service \
     android.hardware.camera.device@3.4
 
+# Dex
+PRODUCT_DEXPREOPT_SPEED_APPS += \
+    SystemUI \
+    NexusLauncherRelease
+
 # Display
 PRODUCT_PACKAGES += \
     copybit.msm8953 \
