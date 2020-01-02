@@ -1,5 +1,5 @@
-allow system_app sysfs_zram:dir search;
-allow system_app sysfs_zram:file { read open getattr }; 
-allow system_app proc_pagetypeinfo:file { read open getattr };
+# FM radio needs to set fm properties
+set_prop(system_app, fm_prop)
 
-allow system_app vendor_file:file { read open execute getattr };
+# zram
+r_dir_file(system_app sysfs_zram)
