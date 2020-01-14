@@ -461,8 +461,3 @@ PRODUCT_PACKAGES += \
 
 # Inherit proprietary files
 $(call inherit-product-if-exists, vendor/yu/YUREKA2/YUREKA2-vendor.mk)
-
-#Prebuilt Apps
-PRODUCT_PACKAGES += \
-	MiXplorer \
-	Retro-Music
