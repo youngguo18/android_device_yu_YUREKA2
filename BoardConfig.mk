@@ -204,6 +204,9 @@ TARGET_PROVIDES_KEYMASTER := true
 # Lockscreen real time charging current values
 BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
 
+# Lights
+TARGET_PROVIDES_LIBLIGHT := true
+
 # Media
 TARGET_USES_MEDIA_EXTENSIONS := true
 
