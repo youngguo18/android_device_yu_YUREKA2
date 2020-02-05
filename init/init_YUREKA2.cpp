@@ -35,7 +35,6 @@
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
 
-#include "vendor_init.h"
 #include "property_service.h"
 
 char const *heapstartsize;
@@ -48,6 +47,9 @@ char const *layer_cache_size;
 char const *shape_cache_size;
 char const *gradient_cache_size;
 char const *drop_shadow_cache_size;
+
+namespace android {
+namespace init {
 
 using android::base::GetProperty;
 using android::base::ReadFileToString;
@@ -142,4 +144,6 @@ void vendor_load_properties()
     property_set("dalvik.vm.heaptargetutilization", "0.75");
     property_set("dalvik.vm.heapminfree", heapminfree);
     property_set("dalvik.vm.heapmaxfree", heapmaxfree);
+}
+}
 }

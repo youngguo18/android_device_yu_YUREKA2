@@ -17,11 +17,10 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_m.mk)
 
 # Overlay
-DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-lineage
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+DEVICE_PACKAGE_OVERLAYS += vendor/omni/overlay/CarrierConfig
 
-PRODUCT_ENFORCE_RRO_TARGETS := \
+#PRODUCT_ENFORCE_RRO_TARGETS := \
     framework-res
 
 # Boot animation
@@ -88,7 +87,6 @@ PRODUCT_COPY_FILES += \
 # ANT+
 PRODUCT_PACKAGES += \
     AntHalService \
-    com.dsi.ant.antradio_library \
     libantradio
 
 #Audio
@@ -275,10 +273,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.xiaomi_mido
 
-# LiveDisplay
-PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@2.0-service-sdm
-
 # IRQ
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf \
@@ -386,7 +380,7 @@ PRODUCT_PACKAGES += \
     ims_ext_common.xml \
     telephony-ext
 
-PRODUCT_BOOT_JARS += \
+#PRODUCT_BOOT_JARS += \
     telephony-ext  
 
 # TextClassifier
@@ -414,10 +408,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine.conf
-
-# Touch features
-PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.xiaomi_mido
 
 # USB HAL
 PRODUCT_PACKAGES += \
@@ -460,7 +450,7 @@ PRODUCT_PACKAGES += \
     libaacwrapper	
 
 # Inherit proprietary files
-$(call inherit-product-if-exists, vendor/yu/YUREKA2/YUREKA2-vendor.mk)
+$(call inherit-product-if-exists, vendor/xiaomi/mido/mido-vendor.mk)
 
 #Prebuilt Apps
 PRODUCT_PACKAGES += \

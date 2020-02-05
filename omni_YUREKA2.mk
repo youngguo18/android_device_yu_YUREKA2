@@ -18,8 +18,15 @@
 # Inherit from YUREKA2 device
 $(call inherit-product, device/yu/YUREKA2/full_YUREKA2.mk)
 
-# Inherit some common AEX stuff.
-$(call inherit-product, vendor/havoc/config/common.mk)
+# Get the prebuilt list of APNs
+$(call inherit-product, vendor/omni/config/gsm.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
+
+# must be before including omni part
+TARGET_BOOTANIMATION_SIZE := 1080p
+
+# Inherit some common stuff.
+$(call inherit-product, vendor/omni/config/common.mk)
 
 # Boot animation
 TARGET_SCREEN_WIDTH := 1080
@@ -29,13 +36,9 @@ TARGET_DENSITY := xxhdpi
 TARGET_BOOT_ANIMATION_RES := 1080
 
 # Device identifier. This must come after all inclusions
-PRODUCT_NAME := havoc_YUREKA2
+PRODUCT_NAME := omni_YUREKA2
 BOARD_VENDOR := YU
 PRODUCT_DEVICE := YUREKA2
-
-# Vendor security patch level
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.lineage.build.vendor_security_patch=2019-07-01
 
 PRODUCT_GMS_CLIENTID_BASE := android-micromax
 
@@ -44,7 +47,3 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="wt89536-user 6.0.1 MMB29M eng.zhouchao.20170723.172948 release-keys"
 
 BUILD_FINGERPRINT := YU/YUREKA2/YUREKA2:6.0.1/MMB29M/01112051:user/release-keys
-
-#Official Havoc
-export export
-HAVOC_BUILD_TYPE=Official
