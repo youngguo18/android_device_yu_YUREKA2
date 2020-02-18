@@ -238,7 +238,9 @@ TARGET_USES_OLD_MNC_FORMAT := true
 include device/qcom/sepolicy/sepolicy_legacy.mk
 include vendor/omni/sepolicy/sepolicy.mk
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(DEVICE_PATH)/sepolicy/private
-BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
+BOARD_SEPOLICY_DIRS += \
+	$(DEVICE_PATH)/sepolicy/vendor \
+	$(DEVICE_PATH)/sepolicy/vendor/msm8953
 #SELINUX_IGNORE_NEVERALLOWS := true
 
 # Treble
