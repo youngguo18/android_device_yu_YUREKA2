@@ -27,3 +27,5 @@ allow init sysfs_battery_supply:file setattr;
 allow init system_file:file { execute_no_trans };
 
 allow init sysfs:file setattr;
+
+allow init debugfs:dir mounton;
