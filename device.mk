@@ -464,4 +464,4 @@ PRODUCT_PACKAGES += \
     libaacwrapper	
 
 # Inherit proprietary files
-$(call inherit-product-if-exists, vendor/yu/YUREKA2/YUREKA2-vendor.mk)
+$(call inherit-product-if-exists, vendor/xiaomi/mido/mido-vendor.mk)

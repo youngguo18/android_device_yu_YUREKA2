@@ -268,4 +268,4 @@ WIFI_HIDL_FEATURE_DISABLE_AP_MAC_RANDOMIZATION := true
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # Inherit the proprietary files
--include vendor/yu/YUREKA2/BoardConfigVendor.mk
+-include vendor/xiaomi/mido/BoardConfigVendor.mk
