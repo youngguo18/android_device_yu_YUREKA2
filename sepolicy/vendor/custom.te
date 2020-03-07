@@ -1,10 +1,3 @@
-#============= dex2oat ==============
-allow dex2oat mm-qcamerad_exec:file getattr;
-
-#============= hal_audio_default ==============
-allow hal_audio_default sysfs:dir { open read };
-allow hal_audio_default i2c_device:chr_file { ioctl read write open };
-
 #============= hal_wifi_default ==============
 allow hal_wifi_default kernel:system module_request;
 
@@ -37,7 +30,6 @@ allow init vold:process noatsecure;
 allow init zygote:process noatsecure;
 
 #============= installd ==============
-allow installd dex2oat:process noatsecure;
 allow installd idmap:process noatsecure;
 
 #============= kernel ==============
@@ -74,8 +66,6 @@ allow system_server bg_boot_complete_prop:file read;
 allow system_server bg_daemon_prop:file read;
 allow system_server bluetooth_prop:file read;
 allow system_server camera_prop:file read;
-allow system_server cnd_vendor_prop:file read;
-allow system_server console_silent_prop:file read;
 allow system_server ctl_LKCore_prop:file read;
 allow system_server ctl_bootanim_prop:file read;
 
