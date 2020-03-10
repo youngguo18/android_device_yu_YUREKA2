@@ -5,3 +5,5 @@ r_dir_file(hvdcp, sysfs_batteryinfo)
 allow hvdcp hvdcp:capability sys_admin;
 
 allow hvdcp sysfs:file { open read write };
+
+allow hvdcp vendor_file:dir read;
