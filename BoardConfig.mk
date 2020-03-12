@@ -196,12 +196,14 @@ DEVICE_FRAMEWORK_MANIFEST_FILE := $(DEVICE_PATH)/framework_manifest.xml
 TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_YUREKA2
 TARGET_RECOVERY_DEVICE_MODULES := libinit_msm8953
 
-
 # Keystore
 TARGET_PROVIDES_KEYMASTER := true
 
 # Lockscreen real time charging current values
 BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
+
+# Lights
+TARGET_PROVIDES_LIBLIGHT := true
 
 # Media
 TARGET_USES_MEDIA_EXTENSIONS := true
