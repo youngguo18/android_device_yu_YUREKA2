@@ -518,7 +518,7 @@ etc/firmware/goodixfp.b06:vendor/etc/firmware/goodixfp.b06
 etc/firmware/goodixfp.mdt:vendor/etc/firmware/goodixfp.mdt
 
 # FM Radio - from LA.UM.8.6.r1-03400-89xx.0
-vendor/bin/fm_qsoc_patches|1d20ce04a514c151da08e606faa595d2380de4d6
+vendor/bin/fm_qsoc_patches|1d20ce04a514c151da08e606faa595d2380de4d6 
 vendor/bin/init.qti.fm.sh|0ac820dd85ebdf5fa73b5e971f6787ff35ceb65d
 vendor/etc/init/init.qti.fm.rc|4f5459058debbea76991e69f8522126f6655fd3b
 
