@@ -141,6 +141,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libbt-vendor
 
+# Bluetooth
+PRODUCT_PACKAGES += \
+    libldacBT_dec
+
 # Camera
 PRODUCT_PACKAGES += \
     camera.msm8953 \
