@@ -205,8 +205,8 @@ PRODUCT_PACKAGES += \
     libqcomfm_jni \
     qcom.fmradio
 
-PRODUCT_PACKAGES += \
-    android.hardware.broadcastradio@1.0-impl
+PRODUCT_BOOT_JARS += \
+       qcom.fmradio
 
 # Libshims
 PRODUCT_PACKAGES += \
