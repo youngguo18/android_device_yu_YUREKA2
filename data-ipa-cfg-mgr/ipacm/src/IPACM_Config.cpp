@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2013-2018, The Linux Foundation. All rights reserved.
+Copyright (c) 2013-2019, The Linux Foundation. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -106,7 +106,7 @@ const char *ipacm_event_name[] = {
 	__stringify(IPA_ETH_BRIDGE_CLIENT_ADD),                /* ipacm_event_eth_bridge*/
 	__stringify(IPA_ETH_BRIDGE_CLIENT_DEL),                /* ipacm_event_eth_bridge*/
 	__stringify(IPA_ETH_BRIDGE_WLAN_SCC_MCC_SWITCH),       /* ipacm_event_eth_bridge*/
-	__stringify(IPA_LAN_DELETE_SELF),                      /* ipacm_event_data_fid */
+	__stringify(IPA_SSR_NOTICE)			       /* NULL*/
 #ifdef FEATURE_L2TP
 	__stringify(IPA_ADD_VLAN_IFACE),                       /* ipa_ioc_vlan_iface_info */
 	__stringify(IPA_DEL_VLAN_IFACE),                       /* ipa_ioc_vlan_iface_info */
@@ -115,6 +115,10 @@ const char *ipacm_event_name[] = {
 	__stringify(IPA_VLAN_CLIENT_INFO),                     /* ipacm_event_data_all */
 	__stringify(IPA_VLAN_IFACE_INFO),                      /* ipacm_event_data_all */
 #endif
+	__stringify(IPA_WLAN_FWR_SSR_BEFORE_SHUTDOWN_NOTICE),       /* ipacm_event_iface*/
+	__stringify(IPA_LAN_DELETE_SELF),                      /* ipacm_event_data_fid */
+	__stringify(IPA_WIGIG_CLIENT_ADD_EVENT),               /* ipacm_event_data_mac_ep */
+	__stringify(IPA_WIGIG_FST_SWITCH),                     /* ipacm_event_data_fst */
 	__stringify(IPACM_EVENT_MAX),
 };
 
@@ -139,6 +143,10 @@ IPACM_Config::IPACM_Config()
 	ipa_bridge_enable = false;
 	isMCC_Mode = false;
 	ipa_max_valid_rm_entry = 0;
+	/* IPA_HW_FNR_STATS */
+	hw_fnr_stats_support = false;
+	hw_counter_offset = 0;
+	sw_counter_offset = 0;
 
 	memset(&rt_tbl_default_v4, 0, sizeof(rt_tbl_default_v4));
 	memset(&rt_tbl_lan_v4, 0, sizeof(rt_tbl_lan_v4));
@@ -183,6 +191,7 @@ int IPACM_Config::Init(void)
 	{
 		IPACMERR("Failed opening %s.\n", DEVICE_NAME);
 	}
+	ver = GetIPAVer(true);
 #ifdef FEATURE_IPACM_HAL
 	strlcpy(IPACM_config_file, "/vendor/etc/IPACM_cfg.xml", sizeof(IPACM_config_file));
 #else
@@ -574,8 +583,8 @@ int IPACM_Config::CheckNatIfaces(const char *dev_name, ipa_ip_type ip_type)
 			if (ip_type == IPA_IP_v6 && pNatIfaces[i].v6_up == true)
 			{
 				IPACMDBG_H(" v6_up=%d\n", pNatIfaces[i].v6_up);
-				return 0;
-			}
+			return 0;
+		}
 			return -1;
 		}
 	}
@@ -877,4 +886,22 @@ const char* IPACM_Config::getEventName(ipa_cm_event_id event_id)
 	}
 
 	return ipacm_event_name[event_id];
+}
+
+enum ipa_hw_type IPACM_Config::GetIPAVer(bool get)
+{
+	int ret;
+
+	if(!get)
+		return ver;
+
+	ret = ioctl(m_fd, IPA_IOC_GET_HW_VERSION, &ver);
+	if(ret != 0)
+	{
+		IPACMERR("Failed to get IPA version with error %d.\n", ret);
+		ver = IPA_HW_None;
+		return IPA_HW_None;
+	}
+	IPACMDBG_H("IPA version is %d.\n", ver);
+	return ver;
 }
