@@ -15,17 +15,13 @@
 # limitations under the License.
 #
 
+# Inherit some common AOSPA stuff.
+include vendor/pa/config/common_full_phone.mk
+
 # Inherit from YUREKA2 device
 $(call inherit-product, device/yu/YUREKA2/full_YUREKA2.mk)
 
-# Inherit some common ShapeshiftOS stuff.
-$(call inherit-product, vendor/aosp/config/common_full_phone.mk)
-
-# Build without Lawnchair
 export LAWNCHAIR_OPTOUT := true
-
-# Build OOS ScreenRecorder
-TARGET_OOS_RECORDER := true
 
 # Boot animation
 TARGET_SCREEN_WIDTH := 1080
@@ -34,12 +30,8 @@ TARGET_ARCH := arm64
 TARGET_DENSITY := xxhdpi
 TARGET_BOOT_ANIMATION_RES := 1080
 
-# GAPPS
-TARGET_GAPPS_ARCH := arm64
-TARGET_SUPPORTS_GOOGLE_RECORDER := true
-
 # Device identifier. This must come after all inclusions
-PRODUCT_NAME := aosp_YUREKA2
+PRODUCT_NAME := pa_YUREKA2
 BOARD_VENDOR := YU
 PRODUCT_DEVICE := YUREKA2
 
