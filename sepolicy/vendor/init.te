@@ -28,3 +28,7 @@ allow init sysfs_battery_supply:file setattr;
 allow init system_file:file { execute_no_trans };
 
 allow init sysfs:file setattr;
+
+allow init vendor_data_file:file lock;
+allow init hal_audio_default:binder call;
+allow init platform_app:binder call; 
