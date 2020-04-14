@@ -143,8 +143,7 @@ PRODUCT_PACKAGES += \
 # Camera
 PRODUCT_PACKAGES += \
     camera.msm8953 \
-    libmm-qcamera \
-    Snap
+    libmm-qcamera
 
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
@@ -462,5 +461,4 @@ $(call inherit-product-if-exists, vendor/xiaomi/mido/mido-vendor.mk)
 
 #Prebuilt Apps
 PRODUCT_PACKAGES += \
-	MiXplorer \
-	Retro-Music
+    GCam
