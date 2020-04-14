@@ -147,8 +147,7 @@ PRODUCT_PACKAGES += \
 # Camera
 PRODUCT_PACKAGES += \
     camera.msm8953 \
-    libmm-qcamera \
-    Snap
+    libmm-qcamera
 
 PRODUCT_PACKAGES += \
     android.hardware.camera.common@1.0 \
@@ -465,6 +464,10 @@ PRODUCT_BOOT_JARS += \
     WfdCommon
 PRODUCT_PACKAGES += \
     libaacwrapper	
+
+#Prebuilt Apps
+PRODUCT_PACKAGES += \
+    GCam
 
 # Inherit proprietary files
 $(call inherit-product-if-exists, vendor/xiaomi/mido/mido-vendor.mk)
