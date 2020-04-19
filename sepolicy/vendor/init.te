@@ -12,8 +12,6 @@ allow init adsprpcd_file:filesystem { mount relabelfrom relabelto };
 # leds
 allow init sysfs_leds:lnk_file read;
 
-allow init sysfs:file setattr;
-
 allow init sysfs_graphics:file { open write };
 
 allow init gx_fpd:binder call;
@@ -28,3 +26,5 @@ allow init su:process { transition rlimitinh };
 allow init su:process { siginh noatsecure };
 allow init sysfs_battery_supply:file setattr;
 allow init system_file:file { execute_no_trans };
+
+allow init sysfs:file setattr;
