@@ -140,10 +140,6 @@ PRODUCT_PACKAGES += \
     android.hardware.automotive.vehicle@2.0 \
     android.hardware.automotive.vehicle@2.0-manager-lib
 
-# Doze
-PRODUCT_PACKAGES += \
-    YUDoze
-
 # Bluetooth
 PRODUCT_PACKAGES += \
     libldacBT_dec
