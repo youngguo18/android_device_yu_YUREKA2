@@ -27,6 +27,7 @@ TARGET_SCREEN_HEIGHT := 1920
 TARGET_ARCH := arm64
 TARGET_DENSITY := xxhdpi
 TARGET_BOOT_ANIMATION_RES := 1080
+TARGET_DISABLES_GAPPS :=true
 
 # Device identifier. This must come after all inclusions
 PRODUCT_NAME := havoc_YUREKA2
