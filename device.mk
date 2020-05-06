@@ -470,7 +470,6 @@ PRODUCT_PACKAGES += \
 
 #Prebuilt Apps
 PRODUCT_PACKAGES += \
-    lawnchair\
     GCam
 
 # Inherit proprietary files
