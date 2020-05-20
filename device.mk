@@ -87,7 +87,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
 
 # Device Properties
--include device/yu/YUREKA2/prop.mk
+-include $(LOCAL_PATH)/vendor_prop.mk
+-include $(LOCAL_PATH)/product_prop.mk
 
 # ANT
 PRODUCT_PACKAGES += \
