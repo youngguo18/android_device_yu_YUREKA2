@@ -14,7 +14,7 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/havoc_YUREKA2.mk
+    $(LOCAL_DIR)/bliss_YUREKA2.mk
 
 COMMON_LUNCH_CHOICES := \
-    havoc_YUREKA2-userdebug
+    bliss_YUREKA2-userdebug
