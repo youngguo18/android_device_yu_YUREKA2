@@ -455,7 +455,6 @@ PRODUCT_PACKAGES += \
     ipacm \
     IPACM_cfg.xml \
     libqsap_sdk \
-    libqmiservices_shim \
     libwifi-hal-qcom \
     wificond \
     wpa_supplicant \
