@@ -21,6 +21,8 @@ $(call inherit-product, device/yu/YUREKA2/full_YUREKA2.mk)
 # Inherit some common MoKee stuff.
 $(call inherit-product, vendor/mokee/config/common_full_phone.mk)
 
+export LAWNCHAIR_OPTOUT := true
+
 # Boot animation
 TARGET_SCREEN_WIDTH := 1080
 TARGET_SCREEN_HEIGHT := 1920
