@@ -508,3 +508,4 @@ service goodix_script /vendor/bin/init.goodix.sh
 
 on property:dev.bootcomplete=1
     setprop sys.io.scheduler "bfq"
+    restart ril-daemon
