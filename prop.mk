@@ -285,10 +285,6 @@ ro.config.sdha_apps_bg_min=8
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.bliss.maintainer=Youngguo
 
-# Zygote preforking
-PRODUCT_PROPERTY_OVERRIDES += \
-persist.device_config.runtime_native.usap_pool_enabled=true
-
 # Properties
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.fha_enable=true \
