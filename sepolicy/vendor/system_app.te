@@ -16,3 +16,12 @@ allow system_app sysfs_battery_supply:file { read };
 allow system_app sysfs_battery_supply:file { open };
 allow system_app sysfs_battery_supply:file { getattr };
 
+allow system_app apex_service:service_manager { find };
+allow system_app system_suspend_control_service:service_manager { find };
+
+allow system_app gx_fpd:binder call;
+allow system_app wificond:binder call;
+allow system_app netd:binder call;
+allow system_app installd:binder call;
+allow system_app apexd:binder call;
+allow system_app vold:binder call;
