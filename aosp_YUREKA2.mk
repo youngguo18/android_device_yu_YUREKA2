@@ -21,7 +21,11 @@ $(call inherit-product, device/yu/YUREKA2/full_YUREKA2.mk)
 # Inherit some common ShapeshiftOS stuff.
 $(call inherit-product, vendor/aosp/config/common_full_phone.mk)
 
+# Build without Lawnchair
 export LAWNCHAIR_OPTOUT := true
+
+# Build OOS ScreenRecorder
+TARGET_OOS_RECORDER := true
 
 # Boot animation
 TARGET_SCREEN_WIDTH := 1080
