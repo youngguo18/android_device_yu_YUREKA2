@@ -32,3 +32,10 @@ allow init sysfs:file setattr;
 allow init vendor_data_file:file lock;
 allow init hal_audio_default:binder call;
 allow init platform_app:binder call; 
+allow init hwservicemanager:binder call; 
+allow init hal_perf_default:binder call; 
+allow init hwservicemanager:binder { transfer }; 
+
+allow init same_process_hal_file:file { execute };
+
+allow init hal_power_hwservice:hwservice_manager { add };

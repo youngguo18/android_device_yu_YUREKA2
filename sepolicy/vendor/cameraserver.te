@@ -1,2 +1,4 @@
-allow cameraserver vendor_file:file { r_file_perms execute };
-allow cameraserver vendor_file:file { open };
+allow cameraserver vendor_file:file { r_file_perms };
+allow cameraserver vendor_file:file { open execute };
+allow cameraserver vendor_audio_prop:file { open read execute getattr };
+allow cameraserver persist_camera_prop:file { open read execute getattr };

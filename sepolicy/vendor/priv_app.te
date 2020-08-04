@@ -1,0 +1,2 @@
+allow priv_app sysfs:file { open getattr };
+allow priv_app proc_version:file { open getattr };
