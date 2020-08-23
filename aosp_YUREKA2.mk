@@ -21,8 +21,8 @@ $(call inherit-product, device/yu/YUREKA2/full_YUREKA2.mk)
 # Inherit some common ShapeshiftOS stuff.
 $(call inherit-product, vendor/aosp/config/common_full_phone.mk)
 
-# Build without Lawnchair
-export LAWNCHAIR_OPTOUT := true
+# Build with OnePlus Launcher
+export TARGET_LAUNCHER_CHOICE := oplauncher
 
 # Build OOS ScreenRecorder
 TARGET_OOS_RECORDER := true
