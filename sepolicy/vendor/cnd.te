@@ -1,1 +1,2 @@
 allow cnd vendor_file:dir read;
+allow cnd default_android_hwservice:hwservice_manager { find };

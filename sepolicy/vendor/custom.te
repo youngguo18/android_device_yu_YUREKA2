@@ -1,9 +1,5 @@
-#============= dex2oat ==============
-allow dex2oat mm-qcamerad_exec:file getattr;
-
 #============= hal_audio_default ==============
 allow hal_audio_default sysfs:dir { open read };
-allow hal_audio_default i2c_device:chr_file { ioctl read write open };
 
 #============= hal_wifi_default ==============
 allow hal_wifi_default kernel:system module_request;
@@ -37,7 +33,6 @@ allow init vold:process noatsecure;
 allow init zygote:process noatsecure;
 
 #============= installd ==============
-allow installd dex2oat:process noatsecure;
 allow installd idmap:process noatsecure;
 
 #============= kernel ==============
@@ -75,7 +70,6 @@ allow system_server bg_daemon_prop:file read;
 allow system_server bluetooth_prop:file read;
 allow system_server camera_prop:file read;
 allow system_server cnd_vendor_prop:file read;
-allow system_server console_silent_prop:file read;
 allow system_server ctl_LKCore_prop:file read;
 allow system_server ctl_bootanim_prop:file read;
 
@@ -91,7 +85,6 @@ allow wcnss_service wifi_prop:property_service set;
 
 #=============netutils_wrapper=============
 dontaudit netutils_wrapper { netutils_wrapper netutils_wrapper }:capability sys_admin;
-allow netutils_wrapper mm-qcamerad_exec:file getattr;
 
 #=============dpmd=========================
 allow dpmd netutils_wrapper:process noatsecure;
@@ -131,15 +124,6 @@ allow toolbox toolbox:capability sys_admin;
 allow toolbox property_socket:sock_file write;
 allow toolbox init:unix_stream_socket connectto;
 
-#===========audioserver====================
-allow audioserver mm-qcamerad_exec:file getattr;
-
-#============idmap=========================
-allow idmap mm-qcamerad_exec:file getattr;
-
-#===========bootstat=======================
-allow bootstat mm-qcamerad_exec:file getattr;
-
 #===========shell==========================
 allow shell mm-qcamerad_exec:file getattr;
 
@@ -147,7 +131,7 @@ allow shell mm-qcamerad_exec:file getattr;
 allow cameraserver mediacodec:binder call;
 
 #===========sensors========================
-allow sensors sensors:capability { sys_admin dac_override dac_read_search fowner };
+allow sensors sensors:capability { sys_admin fowner };
 
 #===========hostapd========================
 allow hostapd hal_wifi_hostapd_default:unix_dgram_socket sendto;

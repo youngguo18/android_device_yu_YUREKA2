@@ -15,3 +15,10 @@ allow qti_init_shell sysfs_torch:dir search;
 allow qti_init_shell sysfs_torch:file rw_file_perms;
 allow qti_init_shell sysfs_vibrator:dir search;
 allow qti_init_shell sysfs_vibrator:file rw_file_perms;
+
+allow qti_init_shell qti_init_shell:capability { dac_override };
+
+allow qti_init_shell system_data_file:dir { read open write getattr remove_name rmdir };
+
+allow qti_init_shell system_data_file:file { unlink };
+

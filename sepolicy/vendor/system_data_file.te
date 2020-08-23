@@ -1,0 +1,2 @@
+allow system_data_file system_data_file:dir { open  read  remove_name  rmdir  write };
+allow system_data_file system_data_file:file { getattr  unlink };

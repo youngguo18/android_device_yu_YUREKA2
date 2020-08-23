@@ -1,11 +1,6 @@
 allow system_server adb_data_file:dir { getattr search };
 allow system_server adb_data_file:file { getattr open read };
 allow system_server block_device:blk_file { getattr };
-allow system_server vendor_file:file { open read };
-
-# input files
-r_dir_file(system_server, idc_file)
-r_dir_file(system_server, keylayout_file)
 
 # vibrator
 allow system_server sysfs_vibrator:file read;
