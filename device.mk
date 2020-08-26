@@ -433,7 +433,6 @@ PRODUCT_PACKAGES += \
 	libcld80211 \
 	libwpa_client \
     hostapd \
-    libqmiservices_shim \
     hostapd_cli \
     ipacm \
     IPACM_cfg.xml \
