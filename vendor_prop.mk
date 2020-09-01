@@ -303,7 +303,7 @@ ro.config.sdha_apps_bg_min=8
 
 # Device Maintainer
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.bliss.maintainer=Youngguo
+	ro.lineage.maintainer=Youngguo
 
 # Properties
 PRODUCT_PROPERTY_OVERRIDES += \
