@@ -14,7 +14,7 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/aosp_YUREKA2.mk
+    $(LOCAL_DIR)/xtended_YUREKA2.mk
 
 COMMON_LUNCH_CHOICES := \
-    aosp_YUREKA2-userdebug
+    xtended_YUREKA2-userdebug
