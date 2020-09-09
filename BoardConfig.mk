@@ -169,6 +169,9 @@ BOARD_HAVE_QCOM_FM := true
 #BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
 #USE_DEVICE_SPECIFIC_GPS := true
 
+# Enable dexpreopt to speed boot time
+WITH_DEXPREOPT := true
+
 # Filesystem
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_USERIMAGES_USE_F2FS := true
@@ -267,6 +270,10 @@ WIFI_DRIVER_FW_PATH_AP := "ap"
 WIFI_DRIVER_FW_PATH_STA := "sta"
 WIFI_HIDL_FEATURE_DISABLE_AP_MAC_RANDOMIZATION := true
 WPA_SUPPLICANT_VERSION := VER_0_8_X
+WIFI_HIDL_FEATURE_DISABLE_AP_MAC_RANDOMIZATION := true
+
+# Enable real time lockscreen charging current values
+BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
 
 # Inherit the proprietary files
 -include vendor/xiaomi/mido/BoardConfigVendor.mk

@@ -523,6 +523,61 @@
              channels="2" />
     </EncoderProfile>
 
+        <!-- CAMCORDER_QUALITY_HIGH_SPEED_LOW/720P : 720p@120fps; 27.0 Mbps -->
+        <EncoderProfile quality="highspeedlow" fileFormat="mp4" duration="30">
+            <Video codec="h264"
+                   bitRate="27000000"
+                   width="1280"
+                   height="720"
+                   frameRate="120" />
+            <!-- audio setting is ignored -->
+            <Audio codec="aac"
+                   bitRate="96000"
+                   sampleRate="48000"
+                   channels="2" />
+        </EncoderProfile>
+
+        <!-- CAMCORDER_QUALITY_HIGH_SPEED_HIGH/720P : 720p@120fps; 27.0 Mbps -->
+        <EncoderProfile quality="highspeedhigh" fileFormat="mp4" duration="30">
+            <Video codec="h264"
+                   bitRate="27000000"
+                   width="1280"
+                   height="720"
+                   frameRate="120" />
+            <!-- audio setting is ignored -->
+            <Audio codec="aac"
+                   bitRate="96000"
+                   sampleRate="48000"
+                   channels="2" />
+        </EncoderProfile>
+
+        <EncoderProfile quality="highspeed720p" fileFormat="mp4" duration="30">
+            <Video codec="h264"
+                   bitRate="27000000"
+                   width="1280"
+                   height="720"
+                   frameRate="120" />
+            <!-- audio setting is ignored -->
+            <Audio codec="aac"
+                   bitRate="96000"
+                   sampleRate="48000"
+                   channels="2" />
+        </EncoderProfile>
+
+        <!-- CAMCORDER_QUALITY_HIGH_SPEED_HIGH/1080P : 1080p@60fps; 34.0 Mbps -->
+        <EncoderProfile quality="highspeed1080p" fileFormat="mp4" duration="30">
+            <Video codec="h264"
+                   bitRate="34000000"
+                   width="1920"
+                   height="1080"
+                   frameRate="60" />
+            <!-- audio setting is ignored -->
+            <Audio codec="aac"
+                   bitRate="96000"
+                   sampleRate="48000"
+                   channels="2" />
+        </EncoderProfile>
+
         <ImageEncoding quality="95" />
         <ImageEncoding quality="80" />
         <ImageEncoding quality="70" />
@@ -770,9 +825,9 @@
         minBitRate="64000" maxBitRate="100000000"
         minFrameWidth="176" maxFrameWidth="3840"
         minFrameHeight="144" maxFrameHeight="2160"
-        minFrameRate="15" maxFrameRate="30"
+        minFrameRate="15" maxFrameRate="120"
         maxHFRFrameWidth="1920" maxHFRFrameHeight="1080"
-        maxHFRMode="60"  />
+        maxHFRMode="120"  />
 
     <VideoEncoderCap name="h263" enabled="true"
         minBitRate="64000" maxBitRate="2000000"
@@ -794,9 +849,9 @@
         minBitRate="64000" maxBitRate="100000000"
         minFrameWidth="176" maxFrameWidth="3840"
         minFrameHeight="144" maxFrameHeight="2160"
-        minFrameRate="15" maxFrameRate="30"
-        maxHFRFrameWidth="0" maxHFRFrameHeight="0"
-        maxHFRMode="0"  />
+        minFrameRate="15" maxFrameRate="120"
+        maxHFRFrameWidth="1920" maxHFRFrameHeight="1080"
+        maxHFRMode="120"  />
 
     <AudioEncoderCap name="aac" enabled="true"
         minBitRate="8000" maxBitRate="96000"
