@@ -236,7 +236,6 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
 
 # RIL
 DISABLE_RILD_OEM_HOOK := true
-TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
 
 # SELinux
 include device/qcom/sepolicy-legacy-um/sepolicy.mk
