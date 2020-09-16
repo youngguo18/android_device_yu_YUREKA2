@@ -19,7 +19,6 @@ allow init hidl_base_hwservice:hwservice_manager add;
 allow init kernel:system module_request;
 allow init mm-qcamerad:process noatsecure;
 allow init netd:process noatsecure;
-allow init perfprofd:process noatsecure;
 allow init qti_init_shell:process noatsecure;
 allow init servicemanager:process noatsecure;
 allow init sysfs:file setattr;
