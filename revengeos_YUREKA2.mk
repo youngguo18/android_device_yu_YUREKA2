@@ -18,8 +18,8 @@
 # Inherit from YUREKA2 device
 $(call inherit-product, device/yu/YUREKA2/full_YUREKA2.mk)
 
-# Inherit some common Xtended stuff.
-$(call inherit-product, vendor/xtended/config/common_full_phone.mk)
+# Inherit some common RevengeOS stuff.
+$(call inherit-product, vendor/revengeos/config/common.mk)
 
 # Boot animation
 TARGET_SCREEN_WIDTH := 1080
@@ -30,12 +30,9 @@ TARGET_BOOT_ANIMATION_RES := 1080
 TARGET_DISABLES_GAPPS :=true
 
 # Device identifier. This must come after all inclusions
-PRODUCT_NAME := xtended_YUREKA2
+PRODUCT_NAME := revengeos_YUREKA2
 BOARD_VENDOR := YU
 PRODUCT_DEVICE := YUREKA2
-
-# Maintainer
-XTENDED_MAINTAINER := youngguo
 
 PRODUCT_GMS_CLIENTID_BASE := android-micromax
 

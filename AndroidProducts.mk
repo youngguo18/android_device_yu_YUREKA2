@@ -14,7 +14,7 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/xtended_YUREKA2.mk
+    $(LOCAL_DIR)/revengeos_YUREKA2.mk
 
 COMMON_LUNCH_CHOICES := \
-    xtended_YUREKA2-userdebug
+    revengeos_YUREKA2-userdebug
