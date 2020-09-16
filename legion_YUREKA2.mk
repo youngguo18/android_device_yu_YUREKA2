@@ -18,8 +18,8 @@
 # Inherit from YUREKA2 device
 $(call inherit-product, device/yu/YUREKA2/full_YUREKA2.mk)
 
-# Inherit some common Xtended stuff.
-$(call inherit-product, vendor/xtended/config/common_full_phone.mk)
+# Inherit some common legion stuff.
+$(call inherit-product, vendor/legion/config/common.mk)
 
 # Boot animation
 TARGET_SCREEN_WIDTH := 1080
@@ -30,12 +30,9 @@ TARGET_BOOT_ANIMATION_RES := 1080
 TARGET_DISABLES_GAPPS :=true
 
 # Device identifier. This must come after all inclusions
-PRODUCT_NAME := xtended_YUREKA2
+PRODUCT_NAME := legion_YUREKA2
 BOARD_VENDOR := YU
 PRODUCT_DEVICE := YUREKA2
-
-# Maintainer
-XTENDED_MAINTAINER := youngguo
 
 PRODUCT_GMS_CLIENTID_BASE := android-micromax
 
@@ -43,4 +40,4 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME=YUREKA2 \
     PRIVATE_BUILD_DESC="wt89536-user 6.0.1 MMB29M eng.zhouchao.20170723.172948 release-keys"
 
-BUILD_FINGERPRINT := YU/YUREKA2/YUREKA2:6.0.1/MMB29M/01112051:user/release-keys
+BUILD_FINGERPRINT := "google/coral/coral:11/RP1A.200720.009/6720564:user/release-keys"
