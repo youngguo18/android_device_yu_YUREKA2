@@ -165,7 +165,8 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.5 \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service \
-    android.hardware.camera.device@3.4
+    android.hardware.camera.device@3.4 \
+    Snap
 
 # Dex
 PRODUCT_DEXPREOPT_SPEED_APPS += \
@@ -475,10 +476,6 @@ PRODUCT_BOOT_JARS += \
     WfdCommon
 PRODUCT_PACKAGES += \
     libaacwrapper	
-
-#Prebuilt Apps
-PRODUCT_PACKAGES += \
-    GCam
 
 # Inherit proprietary files
 $(call inherit-product-if-exists, vendor/xiaomi/mido/mido-vendor.mk)
