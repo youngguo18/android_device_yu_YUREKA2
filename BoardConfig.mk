@@ -18,8 +18,6 @@ DEVICE_PATH := device/yu/YUREKA2
 
 TARGET_OTA_ASSERT_DEVICE := YUREKA2,wt89536
 
-TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
-
 # Compile libhwui in performance mode
 HWUI_COMPILE_FOR_PERF := true
 
