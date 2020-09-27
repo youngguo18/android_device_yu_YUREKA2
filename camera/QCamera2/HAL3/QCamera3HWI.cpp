@@ -1121,7 +1121,7 @@ int32_t QCamera3HardwareInterface::getSensorOutputSize(cam_dimension_t &sensor_d
 void QCamera3HardwareInterface::enablePowerHint()
 {
     if (!mPowerHintEnabled) {
-        m_perfLock.powerHint(PowerHint::VIDEO_ENCODE, true);
+        m_perfLock.powerHint(POWER_HINT_VIDEO_ENCODE, true);
         mPowerHintEnabled = true;
     }
 }
@@ -1139,7 +1139,7 @@ void QCamera3HardwareInterface::enablePowerHint()
 void QCamera3HardwareInterface::disablePowerHint()
 {
     if (mPowerHintEnabled) {
-        m_perfLock.powerHint(PowerHint::VIDEO_ENCODE, false);
+        m_perfLock.powerHint(POWER_HINT_VIDEO_ENCODE, false);
         mPowerHintEnabled = false;
     }
 }
@@ -1618,6 +1618,7 @@ int QCamera3HardwareInterface::configureStreamsPerfLocked(
                 "stream size : %d x %d, stream rotation = %d",
                  newStream->stream_type, newStream->format,
                 newStream->width, newStream->height, newStream->rotation);
+
         //if the stream is in the mStreamList validate it
         bool stream_exists = false;
         for (List<stream_info_t*>::iterator it=mStreamInfo.begin();
@@ -2055,7 +2056,8 @@ int QCamera3HardwareInterface::configureStreamsPerfLocked(
 
                 default:
                     LOGE("not a supported format 0x%x", newStream->format);
-                    break;
+                    pthread_mutex_unlock(&mMutex);
+                    return -EINVAL;
                 }
             } else if (newStream->stream_type == CAMERA3_STREAM_INPUT) {
                 newStream->max_buffers = MAX_INFLIGHT_REPROCESS_REQUESTS;
@@ -4823,7 +4825,6 @@ QCamera3HardwareInterface::translateFromHalMetadata(
     }
 
     IF_META_AVAILABLE(int32_t, sensorSensitivity, CAM_INTF_META_SENSOR_SENSITIVITY, metadata) {
-        if(*sensorSensitivity < 100) *sensorSensitivity = 100;
         LOGD("sensorSensitivity = %d", *sensorSensitivity);
         camMetadata.update(ANDROID_SENSOR_SENSITIVITY, sensorSensitivity, 1);
 
@@ -6394,14 +6395,8 @@ int QCamera3HardwareInterface::initStaticMetadata(uint32_t cameraId)
     staticInfo.update(ANDROID_SENSOR_INFO_WHITE_LEVEL,
             &gCamCapability[cameraId]->white_level, 1);
 
-    if(facingBack && gCamCapability[cameraId]->black_level_pattern[0] < 16) {
-        int32_t black_level_pattern_custom[BLACK_LEVEL_PATTERN_CNT] = {32,32,32,32};
-        staticInfo.update(ANDROID_SENSOR_BLACK_LEVEL_PATTERN,
-                black_level_pattern_custom, BLACK_LEVEL_PATTERN_CNT);
-    } else {
-        staticInfo.update(ANDROID_SENSOR_BLACK_LEVEL_PATTERN,
-                gCamCapability[cameraId]->black_level_pattern, BLACK_LEVEL_PATTERN_CNT);
-    }
+    staticInfo.update(ANDROID_SENSOR_BLACK_LEVEL_PATTERN,
+            gCamCapability[cameraId]->black_level_pattern, BLACK_LEVEL_PATTERN_CNT);
 
     staticInfo.update(ANDROID_FLASH_INFO_CHARGE_DURATION,
             &gCamCapability[cameraId]->flash_charge_duration, 1);
@@ -7905,12 +7900,25 @@ camera_metadata_t* QCamera3HardwareInterface::translateCapabilityToMetadata(int 
             i++) {
         float range = gCamCapability[mCameraId]->fps_ranges_tbl[i].max_fps -
             gCamCapability[mCameraId]->fps_ranges_tbl[i].min_fps;
-        if (range > max_range) {
-            fps_range[0] =
-                (int32_t)gCamCapability[mCameraId]->fps_ranges_tbl[i].min_fps;
-            fps_range[1] =
-                (int32_t)gCamCapability[mCameraId]->fps_ranges_tbl[i].max_fps;
-            max_range = range;
+        if (type == CAMERA3_TEMPLATE_PREVIEW ||
+                type == CAMERA3_TEMPLATE_STILL_CAPTURE ||
+                type == CAMERA3_TEMPLATE_ZERO_SHUTTER_LAG) {
+            if (range > max_range) {
+                fps_range[0] =
+                    (int32_t)gCamCapability[mCameraId]->fps_ranges_tbl[i].min_fps;
+                fps_range[1] =
+                    (int32_t)gCamCapability[mCameraId]->fps_ranges_tbl[i].max_fps;
+                max_range = range;
+            }
+        } else {
+            if (range < 0.01 && max_fixed_fps <
+                    gCamCapability[mCameraId]->fps_ranges_tbl[i].max_fps) {
+                fps_range[0] =
+                    (int32_t)gCamCapability[mCameraId]->fps_ranges_tbl[i].min_fps;
+                fps_range[1] =
+                    (int32_t)gCamCapability[mCameraId]->fps_ranges_tbl[i].max_fps;
+                max_fixed_fps = gCamCapability[mCameraId]->fps_ranges_tbl[i].max_fps;
+            }
         }
     }
     settings.update(ANDROID_CONTROL_AE_TARGET_FPS_RANGE, fps_range, 2);
@@ -9754,6 +9762,14 @@ int QCamera3HardwareInterface::validateStreamRotations(
                 HAL_PIXEL_FORMAT_IMPLEMENTATION_DEFINED);
         bool isZsl = (newStream->stream_type == CAMERA3_STREAM_BIDIRECTIONAL &&
                 isImplDef);
+
+        if(newStream->rotation == -1) {
+            LOGE("ERROR: Invalid stream rotation requested for stream"
+                    "type %d and stream format: %d", newStream->stream_type,
+                    newStream->format);
+            rc = -EINVAL;
+            break;
+        }
 
         if (isRotated && (!isImplDef || isZsl)) {
             LOGE("Error: Unsupported rotation of %d requested for stream"
