@@ -604,4 +604,3 @@ bool QCamera2Factory::isDualCamAvailable(int hal3Enabled)
 }
 
 }; // namespace qcamera
-

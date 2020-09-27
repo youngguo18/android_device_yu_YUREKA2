@@ -412,7 +412,7 @@ void QCamera2HardwareInterface::stop_preview(struct camera_device *device)
              hw->getCameraId());
 
     // Disable power Hint for preview
-    hw->m_perfLock.powerHint(PowerHint::VIDEO_ENCODE, false);
+    hw->m_perfLock.powerHint(POWER_HINT_VIDEO_ENCODE, false);
 
     hw->m_perfLock.lock_acq();
     hw->lockAPI();
@@ -1679,7 +1679,7 @@ QCamera2HardwareInterface::QCamera2HardwareInterface(uint32_t cameraId)
     mCameraDevice.common.close = close_camera_device;
     mCameraDevice.ops = &mCameraOps;
     mCameraDevice.priv = this;
- 
+
 #ifndef USE_DISPLAY_SERVICE
     mCameraDisplay = new QCameraDisplay();
 #else
@@ -3074,9 +3074,8 @@ QCameraHeapMemory *QCamera2HardwareInterface::allocateStreamInfoBuf(
                     streamInfo->user_buf_info.frame_buf_cnt,
                     streamInfo->user_buf_info.frameInterval);
         }
-        [[fallthrough]];
-    case CAM_STREAM_TYPE_PREVIEW:
         break;
+    case CAM_STREAM_TYPE_PREVIEW:
         if (mParameters.getRecordingHintValue()) {
             if(mParameters.isDISEnabled()) {
                 streamInfo->is_type = mParameters.getISType();
@@ -3502,7 +3501,7 @@ int QCamera2HardwareInterface::startPreview()
 
     if (rc == NO_ERROR) {
         // Set power Hint for preview
-        m_perfLock.powerHint(PowerHint::VIDEO_ENCODE, true);
+        m_perfLock.powerHint(POWER_HINT_VIDEO_ENCODE, true);
     }
 
     LOGI("X rc = %d", rc);
@@ -3535,7 +3534,7 @@ int QCamera2HardwareInterface::stopPreview()
     mActiveAF = false;
 
     // Disable power Hint for preview
-    m_perfLock.powerHint(PowerHint::VIDEO_ENCODE, false);
+    m_perfLock.powerHint(POWER_HINT_VIDEO_ENCODE, false);
 
     m_perfLock.lock_acq();
 
@@ -3706,7 +3705,7 @@ int QCamera2HardwareInterface::startRecording()
 
     if (rc == NO_ERROR) {
         // Set power Hint for video encoding
-        m_perfLock.powerHint(PowerHint::VIDEO_ENCODE, true);
+        m_perfLock.powerHint(POWER_HINT_VIDEO_ENCODE, true);
     }
 
     LOGI("X rc = %d", rc);
@@ -3735,7 +3734,7 @@ int QCamera2HardwareInterface::stopRecording()
     int rc = stopChannel(QCAMERA_CH_TYPE_VIDEO);
 
     // Disable power hint for video encoding
-    m_perfLock.powerHint(PowerHint::VIDEO_ENCODE, false);
+    m_perfLock.powerHint(POWER_HINT_VIDEO_ENCODE, false);
     LOGI("X rc = %d", rc);
     return rc;
 }
@@ -5959,9 +5958,8 @@ void QCamera2HardwareInterface::camEvtHandle(uint32_t /*camera_handle*/,
                         obj->mDefCond.broadcast();
                         LOGH("broadcast mDefCond signal\n");
                     }
-                    [[fallthrough]];
+		    break;
                 default:
-                    break;
                     obj->processEvt(QCAMERA_SM_EVT_EVT_NOTIFY, payload);
                     break;
             }
